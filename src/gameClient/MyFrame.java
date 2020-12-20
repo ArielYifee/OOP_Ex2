@@ -51,7 +51,7 @@ public class MyFrame extends JFrame{
 		buffer_image = createImage(w,h);
 		buffer_graphics = buffer_image.getGraphics();
 
-	//	updateFrame();
+		//	updateFrame();
 		drawPokemons(buffer_graphics);
 		drawGraph(buffer_graphics);
 		drawAgants(buffer_graphics);
@@ -61,13 +61,22 @@ public class MyFrame extends JFrame{
 	}
 
 	private void drawInfo(Graphics g) {
-		List<String> str = _ar.get_info();
-		String dt = "none";
-		for(int i=0;i<str.size();i++) {
-			g.drawString(str.get(i)+" dt: "+dt,100,60+i*20);
-		}
-		
+		long current_time = this._ar.get_Game().timeToEnd();
+		String time_left = "Time left: "+(current_time/1000)+" seconds";
+		int game_scenario = this._ar.get_scen();
+		int grade1 = this._ar.getGrade();
+		String grade = "Grade:"+ grade1;
+		String scenario = "scenario number: "+game_scenario;
+		g.setColor(Color.BLACK);
+		Font font= new Font("font", Font.PLAIN, (int)((this.getWidth()+this.getHeight())/100));
+		g.setFont(font);
+		g.drawString(grade,(int)(this.getWidth()*0.5),(int)(this.getHeight()*0.1));
+		g.setFont(font);
+		g.drawString(scenario,(int)(this.getWidth()*0.02),(int)(this.getHeight()*0.1));
+		g.setFont(font);
+		g.drawString(time_left,(int)(this.getWidth()*0.8),(int)(this.getHeight()*0.1));
 	}
+
 	private void drawGraph(Graphics g) {
 		directed_weighted_graph gg = _ar.getGraph();
 		Iterator<node_data> iter = gg.getV().iterator();
@@ -87,28 +96,28 @@ public class MyFrame extends JFrame{
 	private void drawPokemons(Graphics g) {
 		List<CL_Pokemon> fs = _ar.getPokemons();
 		if(fs!=null) {
-		Iterator<CL_Pokemon> itr = fs.iterator();
-		
-		while(itr.hasNext()) {
-			
-			CL_Pokemon f = itr.next();
-			Point3D c = f.getLocation();
-			int r=10;
-			g.setColor(Color.green);
-			if(f.getType()<0) {g.setColor(Color.orange);}
-			if(c!=null) {
+			Iterator<CL_Pokemon> itr = fs.iterator();
 
-				geo_location fp = this._w2f.world2frame(c);
-				g.fillOval((int)fp.x()-r, (int)fp.y()-r, 2*r, 2*r);
-			//	g.drawString(""+n.getKey(), fp.ix(), fp.iy()-4*r);
-				
+			while(itr.hasNext()) {
+
+				CL_Pokemon f = itr.next();
+				Point3D c = f.getLocation();
+				int r=10;
+				g.setColor(Color.green);
+				if(f.getType()<0) {g.setColor(Color.orange);}
+				if(c!=null) {
+
+					geo_location fp = this._w2f.world2frame(c);
+					g.fillOval((int)fp.x()-r, (int)fp.y()-r, 2*r, 2*r);
+					//	g.drawString(""+n.getKey(), fp.ix(), fp.iy()-4*r);
+
+				}
 			}
-		}
 		}
 	}
 	private void drawAgants(Graphics g) {
 		List<CL_Agent> rs = _ar.getAgents();
-	//	Iterator<OOP_Point3D> itr = rs.iterator();
+		//	Iterator<OOP_Point3D> itr = rs.iterator();
 		g.setColor(Color.red);
 		int i=0;
 		while(rs!=null && i<rs.size()) {

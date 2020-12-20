@@ -27,7 +27,7 @@ public class Login_Frame extends JFrame implements ActionListener {
         userID_text = new JTextField();
         // Scenario Num
         scenario_num = new JLabel();
-        scenario_num.setText("Scenario Num :");
+        scenario_num.setText("Scenario Num [0-23]:");
         scenario_text = new JTextField();
         // Start
         start = new JButton("Start!");

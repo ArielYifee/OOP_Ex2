@@ -11,7 +11,6 @@ public class Ex2 implements Runnable {
 
     private static MyFrame _win;
     private static Arena Ar;
-    private static int counter;
     private static int scenario;
     private static int[][] Path;
     private static String[] args_Data;
@@ -37,6 +36,15 @@ public class Ex2 implements Runnable {
         } else {
             id = Integer.parseInt(args_Data[0]);
             scenario = Integer.parseInt(args_Data[1]);
+            if(scenario>23 ||scenario<0){
+                Login_Frame f = new Login_Frame();
+                while (f.Flag() != true) {
+                    System.out.print("");
+                }
+                String[] Data = f.GetData().split(",");
+                id = Integer.parseInt(Data[0]);
+                scenario = Integer.parseInt(Data[1]);
+            }
         }
         game_service game = Game_Server_Ex2.getServer(scenario); // you have [0,23] games
         game.login(id);
@@ -48,10 +56,10 @@ public class Ex2 implements Runnable {
         game.startGame();
         _win.setTitle("Ex2 - OOP: scenario number: "+ scenario);
         int ind = 0;
-        long dt = 100;
+        long dt = 95;
 
         while (game.isRunning()) {
-            moveAgents(game, gg, counter);
+            moveAgents(game, gg);
             try {
                 if (ind % 3 == 0) {
                     _win.update(Ar);
@@ -77,15 +85,17 @@ public class Ex2 implements Runnable {
      *
      * @param game a game_service type.
      * @param g a directed_weighted_graph type.
-     * @param counter a game_service type.
      */
-    private void moveAgents(game_service game, directed_weighted_graph g, int counter) {
-        if (counter == 0) {
-            Next_Node(game, g);
-        }
+    private void moveAgents(game_service game, directed_weighted_graph g) {
+        Ar.setGame(game);
+        int grade = 0;
         String lg = game.getAgents();
         List<CL_Agent> log = Arena.getAgents(lg, g);
         Ar.setAgents(log);
+        for (int i = 0; i < log.size(); i++) {
+            grade += log.get(i).getValue();
+        }
+        Ar.setGrade(grade);
         String fs = game.getPokemons();
         List<CL_Pokemon> ffs = Arena.json2Pokemons(fs);
         Ar.setPokemons(ffs);
@@ -97,16 +107,13 @@ public class Ex2 implements Runnable {
         dw_graph_algorithms g1 = new DWGraph_Algo();
         g1.init(g);
         ArrayList<CL_Agent> AL = (ArrayList<CL_Agent>) Ar.getAgents();
+            Next_Node(game, g);
         for (int i = 0; i < AL.size(); i++) {
             if (AL.get(Path[0][i]).getNextNode() == -1) {
                 List<node_data> L = g1.shortestPath(AL.get(Path[0][i]).getSrcNode(), Path[1][i]);
                 if (AL.get(Path[0][i]).getSrcNode() != Path[1][i]) {
                     if (L.size() <= 1) {
-                        this.counter = 0;
                         break;
-                    }
-                    if (L.size() <= 4) {
-                        this.counter = 0;
                     }
                     int next_node = L.get(1).getKey();
                     game.chooseNextEdge(Path[0][i], next_node);
@@ -124,13 +131,7 @@ public class Ex2 implements Runnable {
                     this.Path = new_path;
                     List<node_data> L2 = g1.shortestPath(AL.get(Path[0][i]).getSrcNode(), Path[1][i]);
                     if (L2.size() <= 1) {
-                        this.counter = 0;
                         break;
-                    }
-                    if (L2.size() <= 4) {
-                        this.counter = 0;
-                    } else {
-                        this.counter = 1;
                     }
                     int next_node = L2.get(1).getKey();
                     game.chooseNextEdge(Path[0][i], next_node);
@@ -416,7 +417,6 @@ public class Ex2 implements Runnable {
             }
         }
         this.Path = AG;
-        this.counter = 1;
     }
     /**
      *Gets all the data from the server,
@@ -430,6 +430,8 @@ public class Ex2 implements Runnable {
         String g = game.getGraph();
         dw_graph_algorithms g1 = new DWGraph_Algo();
         g1.load(g);
+        Ar.setGame(game);
+        Ar.setScen(scenario);
         Ar.setGraph(g1.getGraph());
         String fs = game.getPokemons();
         Ar.setPokemons(Arena.json2Pokemons(fs));

@@ -1,9 +1,6 @@
 package gameClient;
 
-import api.directed_weighted_graph;
-import api.edge_data;
-import api.geo_location;
-import api.node_data;
+import api.*;
 import gameClient.util.Point3D;
 import gameClient.util.Range;
 import gameClient.util.Range2D;
@@ -23,6 +20,8 @@ import java.util.List;
  */
 public class Arena {
     public static final double EPS1 = 0.001, EPS2 = EPS1 * EPS1, EPS = EPS2;
+    private game_service Gs;
+    private int scen , grade;
     private directed_weighted_graph _gg;
     private List<CL_Agent> _agents;
     private List<CL_Pokemon> _pokemons;
@@ -35,7 +34,7 @@ public class Arena {
     }
 
     private Arena(directed_weighted_graph g, List<CL_Agent> r, List<CL_Pokemon> p) {
-        _gg = g;
+        this._gg = g;
         this.setAgents(r);
         this.setPokemons(p);
     }
@@ -50,6 +49,15 @@ public class Arena {
 
     public void setGraph(directed_weighted_graph g) {
         this._gg = g;
+    }
+    public void setGame(game_service game){
+        this.Gs =game;
+    }
+    public void setScen(int scenario){
+        this.scen = scenario;
+    }
+    public void setGrade(int grade){
+        this.grade = grade;
     }
 
     //init();}
@@ -104,8 +112,14 @@ public class Arena {
         return _info;
     }
 
-    public void set_info(List<String> _info) {
-        this._info = _info;
+    public game_service get_Game(){
+        return this.Gs;
+    }
+    public int get_scen(){
+        return scen;
+    }
+    public int getGrade(){
+        return this.grade;
     }
 
     ////////////////////////////////////////////////////
