@@ -22,8 +22,7 @@ in src/GUI in myPanel you can add your own screens.
 
 # Class Method
 
-## class: DWGraph_DS
-implements directed_weighted_graph 
+## class: DWGraph_DS implements directed_weighted_graph 
 
 private method: 
 
@@ -48,8 +47,7 @@ function:
   * edgeSize
   * getMC
     
-## class: DWGraph_DS
-implements node_data
+## class: DWGraph_DS implements node_data
 
 private method:
 
@@ -74,8 +72,7 @@ function:
 * getTag
 * setTag
 	
-## class: Edge_Data
-implements edge_data
+## class: Edge_Data implements edge_data
 
 private method:
 
@@ -96,8 +93,7 @@ function:
 * getTag
 * setTag
    
-## class: DWGraph_Algo 
-implements dw_graph_algorithms 
+## class: DWGraph_Algo implements dw_graph_algorithms 
 
 private method:
 
