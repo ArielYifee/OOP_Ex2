@@ -1,4 +1,4 @@
-## Directed Weighted Graph and game
+# Directed Weighted Graph and game
 
 ![](https://i.pinimg.com/originals/1d/7e/83/1d7e836aa727aa30038c1fb8bf7fc7b6.gif)
 
@@ -6,11 +6,11 @@ Ex2 is the third exercise in the OPP course of Ariel university.
 this exercise will allow you to create a directed and weighted graph and to get information such as the shortest path between nodes, 
 which is calculated by the shortest weighted path, copy the graph, remove nodes, or edges, adding nodes, connection node, save and load graph and more.
 
-## How To Installation
+# How To Installation
 
 to use this exercise you need to import the .java files to your IDE and now you can use this.
 
-## How To Usage
+# How To Usage
 
 we have here two classes: Graph_DS, this class included NodeInfo class and Graph_Algo. there is an interface to each class that elaborates on each function.
 in the implementation of each function, some comments will explain how the function works.
@@ -20,9 +20,9 @@ in src/API/ in ex2 you can use the GUI or code the game you want in the main.
 in src/algorithm/ in algoManager you can change the running algo with one of your own.
 in src/GUI in myPanel you can add your own screens.
 
-## Class Method
+# Class Method
 
-# class: DWGraph_DS
+## class: DWGraph_DS
 implements directed_weighted_graph 
 
 private method: 
@@ -48,7 +48,7 @@ function:
   * edgeSize
   * getMC
     
-# class: DWGraph_DS
+## class: DWGraph_DS
 implements node_data
 
 private method:
@@ -74,7 +74,7 @@ function:
 * getTag
 * setTag
 	
-# class: Edge_Data
+## class: Edge_Data
 implements edge_data
 
 private method:
@@ -96,7 +96,7 @@ function:
 * getTag
 * setTag
    
-# class: DWGraph_Algo 
+## class: DWGraph_Algo 
 implements dw_graph_algorithms 
 
 private method:
@@ -120,11 +120,13 @@ function:
  * DFS 
  * TDFS
 	
-## Links
+# Links
 	
 [Shortest path problem](https://en.wikipedia.org/wiki/Shortest_path_problem)
+
+[Gale–Shapley algorithm](https://en.wikipedia.org/wiki/Gale%E2%80%93Shapley_algorithm)
 	
-## Tests 
+# Tests 
 
 Ex2_Testr:
 
