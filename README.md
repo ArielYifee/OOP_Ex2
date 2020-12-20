@@ -1,4 +1,4 @@
-##Directed Weighted Graph and game
+## Directed Weighted Graph and game
 
 <img src="C:\Users\moria\Desktop" width="250">
 
@@ -21,7 +21,7 @@ in src/GUI in myPanel you can add your own screens.
 
 ## Class Method
 
-#class: DWGraph_DS
+# class: DWGraph_DS
 implements directed_weighted_graph 
 
 private method: 
@@ -62,10 +62,9 @@ private method:
 
 function:
 
-    * Node_Data
-    * Node_Data
-	* getKey
-    * getLocation
+* Node_Data
+* getKey
+* getLocation
 	* setLocation
 	* getWeight
 	* setWeight
@@ -87,7 +86,7 @@ private method:
 	
 function:
 
-    * Edge_Data
+  * Edge_Data
 	* getSrc
 	* getDest
 	* getWeight
@@ -96,7 +95,7 @@ function:
 	* getTag
 	* setTag
    
-#class: DWGraph_Algo 
+# class: DWGraph_Algo 
 implements dw_graph_algorithms 
 
 private method:
@@ -122,11 +121,11 @@ function:
 	
 ## Links
 	
-	[Shortest path problem](https://en.wikipedia.org/wiki/Shortest_path_problem)
+[Shortest path problem](https://en.wikipedia.org/wiki/Shortest_path_problem)
 	
 ## Tests 
 
-#Ex2_Testr:
+Ex2_Testr:
 
     * public directed_weighted_graph graph1()
 	* public directed_weighted_graph graph2()
