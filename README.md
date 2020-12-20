@@ -48,7 +48,7 @@ function:
   * edgeSize
   * getMC
     
-#class: DWGraph_DS
+# class: DWGraph_DS
 implements node_data
 
 private method:
@@ -128,9 +128,9 @@ function:
 
 Ex2_Testr:
 
-     * public directed_weighted_graph graph1()
-     * public directed_weighted_graph graph2()
-     * public directed_weighted_graph graph3()
+      public directed_weighted_graph graph1()
+      public directed_weighted_graph graph2()
+      public directed_weighted_graph graph3()
 
 ## License
 
