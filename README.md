@@ -6,11 +6,11 @@ Ex2 is the third exercise in the OPP course of Ariel university.
 this exercise will allow you to create a directed and weighted graph and to get information such as the shortest path between nodes, 
 which is calculated by the shortest weighted path, copy the graph, remove nodes, or edges, adding nodes, connection node, save and load graph and more.
 
-# How To Installation
+# Installation
 
 to use this exercise you need to import the .java files to your IDE and now you can use this.
 
-# How To Usage
+# Usage
 
 we have here two classes: Graph_DS, this class included NodeInfo class and Graph_Algo. there is an interface to each class that elaborates on each function.
 in the implementation of each function, some comments will explain how the function works.
